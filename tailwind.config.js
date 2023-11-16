@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      height: {
+        '526': '526px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

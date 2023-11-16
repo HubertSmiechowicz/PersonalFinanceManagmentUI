@@ -1,15 +1,21 @@
-import SimpleButton from "@/components/ButtonsArea/SimpleButton.tsx";
+import GetButton from "@/components/ButtonsArea/GetButton.tsx";
+import * as React from "react";
 
 function ButtonsArea(props: {padding: string,
     position: string,
     firstButtonMargin: string,
     secondButtonMargin: string,
     firstButtonContent: string,
-    secondButtonContent: string} ){
+    secondButtonContent: string,
+    pageNumber: number,
+    setPageNumber: React.Dispatch<React.SetStateAction<number>>,
+    maxPageNumber: number,
+    api: string,
+    pagingData: (dataPaged: {id: number, date: string, billName: string, amount: number}[]) => void }){
     return (
-        <div className={`${props.padding} w-9/12 md:w-6/12 lg:w-3/12 flex ${props.position}`}>
-            <SimpleButton margin={props.firstButtonMargin} content={props.firstButtonContent} />
-            <SimpleButton margin={props.secondButtonMargin} content={props.secondButtonContent} />
+        <div className={`${props.padding} w-9/12 flex ${props.position}`}>
+            <GetButton margin={props.firstButtonMargin} content={props.firstButtonContent} pageNumber={props.pageNumber} setPageNumber={props.setPageNumber} maxPageNumber={props.maxPageNumber} api={props.api} pagingData={props.pagingData}/>
+            <GetButton margin={props.secondButtonMargin} content={props.secondButtonContent} pageNumber={props.pageNumber} setPageNumber={props.setPageNumber} maxPageNumber={props.maxPageNumber} api={props.api} pagingData={props.pagingData}/>
         </div>
     )
 }

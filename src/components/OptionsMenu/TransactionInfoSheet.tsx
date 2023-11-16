@@ -8,9 +8,10 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import {Info } from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
-import {useEffect, useState} from "react";
+import InfoDetails from "@/components/OptionsMenu/InfoDetails.tsx";
+import {Info } from "lucide-react";
+import {useState} from "react";
 import axios from "axios";
 
 function TransactionInfoSheet(props: { api: string, transactionId: number }) {
@@ -51,14 +52,14 @@ function TransactionInfoSheet(props: { api: string, transactionId: number }) {
                     </SheetHeader>
                     <div className="grid grid-cols-2 justify-center items-center gap-4">
                         <div>
-                            <p className="pb-2">Date:  {date}</p>
-                            <p className="pb-2">Name:  {name}</p>
-                            <p className="pb-2">Bill:  {billName}</p>
+                            <InfoDetails name={'Date'} value={date}></InfoDetails>
+                            <InfoDetails name={'Name'} value={name}></InfoDetails>
+                            <InfoDetails name={'Bill'} value={billName}></InfoDetails>
                         </div>
                         <div>
-                            <p className="pb-2">Amount:  {amount}</p>
-                            <p className="pb-2">Status:  {status}</p>
-                            <p className="pb-2">Category:  {categoryName}</p>
+                            <InfoDetails name={'Amount'} value={`${amount}`}></InfoDetails>
+                            <InfoDetails name={'Status'} value={status}></InfoDetails>
+                            <InfoDetails name={'Category'} value={categoryName}></InfoDetails>
                         </div>
                     </div>
                     <SheetFooter>
