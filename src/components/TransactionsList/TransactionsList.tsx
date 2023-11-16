@@ -43,7 +43,7 @@ function TransactionsList () {
                         <Legend />
                         <TableBody className="text-slate-300 text-base">
                             {transactions.map((transaction) => (
-                                <TransactionsItem id={transaction.id} date={transaction.date} bill={transaction.billName} amount={transaction.amount} api={api} />
+                                <TransactionsItem id={transaction.id} date={transaction.date} bill={transaction.billName} amount={transaction.amount} api={api} setPageNumber={setPageNumber} pagingData={pagingData} />
                             ))}
                         </TableBody>
                     </Table>

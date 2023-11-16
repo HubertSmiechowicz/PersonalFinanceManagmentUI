@@ -7,9 +7,9 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet.tsx"
 import {Button} from "@/components/ui/button.tsx";
-import InfoDetails from "@/components/OptionsMenu/InfoDetails.tsx";
+import InfoDetails from "@/components/TransactionInfo/InfoDetails.tsx";
 import {Info } from "lucide-react";
 import {useState} from "react";
 import axios from "axios";
