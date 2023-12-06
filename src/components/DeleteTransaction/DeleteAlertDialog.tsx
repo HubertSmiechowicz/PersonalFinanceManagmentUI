@@ -10,14 +10,14 @@ import {Button} from "@/components/ui/button.tsx";
 import axios from "axios";
 import * as React from "react";
 
-function DeleteAlertDialog(props: {api: string, transactionId: number, setPageNumber: React.Dispatch<React.SetStateAction<number>>, pagingData: (dataPaged: {id: number, date: string, billName: string, amount: number}[]) => void}) {
+function DeleteAlertDialog(props: {api: string, transactionId: number, pageNumber: number, setPageNumber: React.Dispatch<React.SetStateAction<number>>, pagingData: (dataPaged: {id: number, date: string, billName: string, amount: number}[]) => void}) {
 
     const deleteTransaction = () => {
         axios.delete(`${props.api}?id=${props.transactionId}`)
             .then((response) => {
                 if (response.status === 200) {
-                    axios.get(`${props.api}?pageNumber=${0}`).then((response) => {
-                        props.setPageNumber(0);
+                    axios.get(`${props.api}?pageNumber=${props.pageNumber}`).then((response) => {
+                        props.setPageNumber(props.pageNumber);
                         props.pagingData(response.data);
                     })
                 }

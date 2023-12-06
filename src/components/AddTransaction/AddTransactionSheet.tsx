@@ -82,9 +82,9 @@ function AddTransactionSheet(props: {api: string, setPageNumber: React.Dispatch<
                         <SheetDescription>Add a new transaction by completing the form below</SheetDescription>
                     </SheetHeader>
                     <div className="grid gap-4 py-4">
-                        <FormComponent variant={"name"} getDataFromFormComponent={getDataFromFormComponent}/>
+                        <FormComponent cols={"grid-cols-4"} checkbox={false} disabled={false} placeHolder={"Name"} variant={"name"} getDataFromFormComponent={getDataFromFormComponent} setDisabled={() => {}} checked={false} toggleDisabled={() => {}}/>
                         <div className="grid grid-cols-4 gap-4 items-center">
-                            <Label htmlFor="select" className="text-right capitalize">Select</Label>
+                            <Label htmlFor="select" className="text-right capitalize">Status</Label>
                             <div className="col-span-3 text-slate-900">
                                 <Select onValueChange={getStatus}>
                                     <SelectTrigger>
@@ -101,17 +101,17 @@ function AddTransactionSheet(props: {api: string, setPageNumber: React.Dispatch<
                         </div>
                         <div className="grid grid-cols-4 gap-4 items-center">
                             <Label htmlFor="bill" className="text-right capitalize">Bill</Label>
-                            <SelectData variant="bill" getDataFromSelectData={getDataFromSelectData}/>
+                            <SelectData variant="bill" getDataFromSelectData={getDataFromSelectData} disabled={false} placeHolder={"Bill"}/>
                         </div>
-                        <FormComponent variant={"amount"} getDataFromFormComponent={getDataFromFormComponent}/>
+                        <FormComponent cols={"grid-cols-4"} checkbox={false} disabled={false} placeHolder={"Amount"} variant={"amount"} getDataFromFormComponent={getDataFromFormComponent} setDisabled={() => {}} checked={false} toggleDisabled={() => {}}/>
                         <div className="grid grid-cols-4 gap-4 items-center">
                             <Label htmlFor="category" className="text-right capitalize">Category</Label>
-                            <SelectData variant="category" getDataFromSelectData={getDataFromSelectData}/>
+                            <SelectData variant="category" getDataFromSelectData={getDataFromSelectData} disabled={false} placeHolder={"Category"}/>
                         </div>
                     </div>
                     <SheetFooter>
                         <SheetClose>
-                            <AddButton submit={submit}></AddButton>
+                            <AddButton submit={submit} disable={false}></AddButton>
                         </SheetClose>
                     </SheetFooter>
                 </SheetContent>
