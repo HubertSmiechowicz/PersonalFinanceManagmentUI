@@ -2,9 +2,25 @@ import {Button} from "@/components/ui/button.tsx";
 import axios from "axios";
 import * as React from "react";
 
-function GetButton(props: {margin: string, content: string, pageNumber: number, setPageNumber: React.Dispatch<React.SetStateAction<number>>, maxPageNumber: number, api: string, pagingData: (dataPaged: {id: number, date: string, billName: string, amount: number}[]) => void }) {
+function GetButton(props: {margin: string, content: string, pageNumber: number, setPageNumber: React.Dispatch<React.SetStateAction<number>>, maxPageNumber: number, api: string, pagingData: (dataPaged: {id: number, date: string, billName: string, amount: number}[]) => void, monthMode: boolean }) {
 
     let page: number;
+
+    const callMethod = () => {
+        if (!props.monthMode)
+        {
+            axios.get(`${props.api}?pageNumber=${page}`).then((response) => {
+                props.setPageNumber(page);
+                props.pagingData(response.data);
+            })
+        }
+        else {
+            axios.get(`${props.api}/month?pageNumber=${page}&monthNumber=${new Date().getMonth() + 1}`).then((response) => {
+                props.setPageNumber(page);
+                props.pagingData(response.data);
+            })
+        }
+    }
 
     const getTransactions = () => {
         if (props.content === "Next") {
@@ -15,11 +31,8 @@ function GetButton(props: {margin: string, content: string, pageNumber: number, 
             else {
                 page = props.pageNumber + 1;
             }
-
-            axios.get(`${props.api}?pageNumber=${page}`).then((response) => {
-                props.setPageNumber(page);
-                props.pagingData(response.data);
-            })
+            console.log(page);
+            callMethod();
         }
         else if (props.content === "Previous") {
 
@@ -29,11 +42,8 @@ function GetButton(props: {margin: string, content: string, pageNumber: number, 
             else {
                 page = props.pageNumber - 1;
             }
-
-            axios.get(`${props.api}?pageNumber=${page}`).then((response) => {
-                props.setPageNumber(page);
-                props.pagingData(response.data);
-            })
+            console.log(page);
+            callMethod();
         }
     }
 

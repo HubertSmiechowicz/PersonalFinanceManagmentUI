@@ -43,24 +43,20 @@ function TransactionInfoSheet(props: { api: string, transactionId: number }) {
                         <span>details</span>
                     </Button>
                 </SheetTrigger>
-                <SheetContent side={"bottom"} className="bg-slate-900 text-slate-50">
+                <SheetContent className="bg-slate-900 text-slate-50">
                     <SheetHeader className="pb-5">
                         <SheetTitle className="text-slate-50">Transaction details</SheetTitle>
                         <SheetDescription>
                             You can find details related to this transaction here
                         </SheetDescription>
                     </SheetHeader>
-                    <div className="grid grid-cols-2 justify-center items-center gap-4">
-                        <div>
-                            <InfoDetails name={'Date'} value={date}></InfoDetails>
-                            <InfoDetails name={'Name'} value={name}></InfoDetails>
-                            <InfoDetails name={'Bill'} value={billName}></InfoDetails>
-                        </div>
-                        <div>
-                            <InfoDetails name={'Amount'} value={`${amount}`}></InfoDetails>
-                            <InfoDetails name={'Status'} value={status}></InfoDetails>
-                            <InfoDetails name={'Category'} value={categoryName}></InfoDetails>
-                        </div>
+                    <div>
+                        <InfoDetails name={'Date'} value={date}></InfoDetails>
+                        <InfoDetails name={'Name'} value={name}></InfoDetails>
+                        <InfoDetails name={'Bill'} value={billName}></InfoDetails>
+                        <InfoDetails name={'Amount'} value={`${amount.toFixed(2)}`}></InfoDetails>
+                        <InfoDetails name={'Status'} value={status}></InfoDetails>
+                        <InfoDetails name={'Category'} value={categoryName}></InfoDetails>
                     </div>
                     <SheetFooter>
                         <SheetClose />

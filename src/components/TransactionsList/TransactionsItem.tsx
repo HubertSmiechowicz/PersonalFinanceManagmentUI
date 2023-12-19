@@ -8,7 +8,7 @@ function TransactionsItem(props:{ id: number, date: string, bill: string, amount
             <TableRow className="hover:bg-transparent">
                 <TableCell>{props.date}</TableCell>
                 <TableCell>{props.bill}</TableCell>
-                <TableCell>{props.amount}</TableCell>
+                <TableCell>{props.amount.toFixed(2)}</TableCell>
                 <OptionsMenu api={props.api} transactionId={props.id} pageNumber={props.pageNumber} setPageNumber={props.setPageNumber} pagingData={props.pagingData}/>
             </TableRow>
         </>

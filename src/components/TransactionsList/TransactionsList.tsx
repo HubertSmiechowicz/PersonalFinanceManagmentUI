@@ -5,6 +5,7 @@ import ButtonsArea from "@/components/ButtonsArea/ButtonsArea.tsx";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import AddTransactionSheet from "@/components/AddTransaction/AddTransactionSheet.tsx";
+import SwitchesArea from "@/components/SwitchesArea/SwitchesArea.tsx";
 
 function TransactionsList () {
 
@@ -12,6 +13,7 @@ function TransactionsList () {
     const api = "http://localhost:5074/transaction";
     const [pageNumber, setPageNumber] = useState<number>(0);
     const [maxPageNumber, setMaxPageNumber] = useState<number>(0);
+    const [monthMode, setMonthMode] = useState<boolean>(false);
 
     useEffect(() =>
     {
@@ -35,7 +37,7 @@ function TransactionsList () {
         <>
             <div className={"flex flex-col items-center justify-center w-12/12 md:w-9/12 lg:w-6/12 2xl:w-4/12"}>
                 <div className="w-9/12 flex justify-between items-center">
-                    <ButtonsArea padding={'pb-5'} position={"justify-start"} firstButtonMargin={"mr-2"} secondButtonMargin={"mr-0"} firstButtonContent={"Week"} secondButtonContent={"Month"} pageNumber={pageNumber} setPageNumber={setPageNumber} maxPageNumber={maxPageNumber} api={api} pagingData={pagingData}/>
+                    <SwitchesArea padding={'pb-5'} position={"justify-start"} firstButtonMargin={"mr-2"} secondButtonMargin={"mr-0"} firstButtonContent={"Week"} secondButtonContent={"Month"} pageNumber={pageNumber} setPageNumber={setPageNumber} maxPageNumber={maxPageNumber} api={api} pagingData={pagingData} monthMode={monthMode} setMonthMode={setMonthMode} setMaxPageNumber={setMaxPageNumber}/>
                     <AddTransactionSheet api={api} setPageNumber={setPageNumber} maxPageNumber={maxPageNumber} pagingData={pagingData}></AddTransactionSheet>
                 </div>
                 <div className="w-full h-526 border rounded-md">
@@ -48,7 +50,7 @@ function TransactionsList () {
                         </TableBody>
                     </Table>
                 </div>
-                <ButtonsArea padding={'pt-5'} position={"justify-end"} firstButtonMargin={"mr-2"} secondButtonMargin={"mr-0"} firstButtonContent={"Previous"} secondButtonContent={"Next"} pageNumber={pageNumber} setPageNumber={setPageNumber} maxPageNumber={maxPageNumber} api={api} pagingData={pagingData}/>
+                <ButtonsArea padding={'pt-5'} position={"justify-end"} firstButtonMargin={"mr-2"} secondButtonMargin={"mr-0"} firstButtonContent={"Previous"} secondButtonContent={"Next"} pageNumber={pageNumber} setPageNumber={setPageNumber} maxPageNumber={maxPageNumber} api={api} pagingData={pagingData} monthMode={monthMode}/>
             </div>
         </>
     )

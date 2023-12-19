@@ -206,7 +206,7 @@ function EditTransactionSheet(props: {variant: string, api: string, transactionI
                         <SelectData variant="bill" getDataFromSelectData={getDataFromSelectData} disabled={disabledBill} placeHolder={billIdPlaceHolder}/>
                         <Checkbox className="bg-slate-50 col-span-1" checked={isCheckedBill} onCheckedChange={() => toggleDisabled(disabledBill, setDisabledBill, 'bill')}/>
                     </div>
-                    <FormComponent cols={"grid-cols-5"} checkbox={true} disabled={disabledAmount} setDisabled={setDisabledAmount} placeHolder={amountPlaceHolder.toString()} variant={"amount"} getDataFromFormComponent={getDataFromFormComponent} toggleDisabled={toggleDisabled} checked={isCheckedAmount}/>
+                    <FormComponent cols={"grid-cols-5"} checkbox={true} disabled={disabledAmount} setDisabled={setDisabledAmount} placeHolder={amountPlaceHolder.toFixed(2).toString()} variant={"amount"} getDataFromFormComponent={getDataFromFormComponent} toggleDisabled={toggleDisabled} checked={isCheckedAmount}/>
                     <div className="grid grid-cols-5 gap-4 items-center">
                         <Label htmlFor="category" className="text-right capitalize">Category</Label>
                         <SelectData variant="category" getDataFromSelectData={getDataFromSelectData} disabled={disabledCategory} placeHolder={categoryIdPlaceHolder}/>
